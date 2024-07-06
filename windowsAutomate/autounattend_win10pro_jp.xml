@@ -47,7 +47,9 @@
                         <ModifyPartition wcm:action="add">
                             <Order>4</Order>
                             <PartitionID>4</PartitionID>
+                            <Label>Windows</Label>
                             <Format>NTFS</Format>
+                            <Letter>C</Letter>
                         </ModifyPartition>
                     </ModifyPartitions>
                     <DiskID>0</DiskID>
