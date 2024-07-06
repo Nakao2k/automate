@@ -145,8 +145,8 @@
             <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup -->
             <AutoLogon>
                 <Password>
-                    <Value>cABhAGMAawBlAHIAUABhAHMAcwB3AG8AcgBkAA==</Value>
-                    <PlainText>false</PlainText>
+                    <Value>Youtube#99</Value>
+                    <PlainText>true</PlainText>
                 </Password>
                 <Enabled>true</Enabled>
                 <Username>Administrator</Username>
@@ -210,8 +210,8 @@
             </OOBE>
             <UserAccounts>
                 <AdministratorPassword>
-                    <Value>cABhAGMAawBlAHIAQQBkAG0AaQBuAGkAcwB0AHIAYQB0AG8AcgBQAGEAcwBzAHcAbwByAGQA</Value>
-                    <PlainText>false</PlainText>
+                    <Value>Youtube#99</Value>
+                    <PlainText>true</PlainText>
                 </AdministratorPassword>
             </UserAccounts>
             <RegisteredOwner />
