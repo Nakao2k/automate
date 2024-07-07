@@ -83,12 +83,14 @@
                 <OSImage>
                     <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-setup-imageinstall-dataimage-installfrom-metadata-key -->
                     <!-- Get-WindowsImage -ImagePath D:\sources\install.wim -->
+                    <!--
                     <InstallFrom>
                         <MetaData wcm:action="add">
                             <Key>/IMAGE/NAME</Key>
                             <Value>Windows Server 2022 SERVERSTANDARD</Value>
                         </MetaData>
                     </InstallFrom>
+                    -->
                     <InstallTo>
                         <DiskID>0</DiskID>
                         <PartitionID>4</PartitionID>

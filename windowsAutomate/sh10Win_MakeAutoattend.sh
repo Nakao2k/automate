@@ -1,6 +1,6 @@
 #/bin/bash
 
-# “ü—Í/o—Íƒtƒ@ƒCƒ‹‚ğ’è‹`
+# å…¥åŠ›/å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å®šç¾©
 win10pro=autounattend_win10pro_jp.xml
 win11pro=autounattend_win11pro_jp.xml
 
@@ -8,30 +8,30 @@ win10any=autounattend_win10_jp.xml
 win11any=autounattend_win11_jp.xml
 
 
-# win10 pro‚Ìƒtƒ@ƒCƒ‹‚ğƒRƒs[‚µ‚Äwin11 proì¬
+# win10 proã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦win11 proä½œæˆ
 cp $win10pro $win11pro
 
-# Windows 10 pro‚ğWindows 11 pro‚É•ÏX
+# Windows 10 proã‚’Windows 11 proã«å¤‰æ›´
 sed -i -r "s/(<Value>)Windows 10 Pro(<\/Value>)/\1Windows 11 Pro\2/" $win11pro
 
 
-# win10 pro‚Ìƒtƒ@ƒCƒ‹‚ğƒRƒs[‚µ‚Äwin10 anyì¬
+# win10 proã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦win10 anyä½œæˆ
 cp $win10pro $win10any
 
-# ƒRƒƒ“ƒgƒAƒEƒgŠJn
+# ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆé–‹å§‹
 sed -i -r "s/( *)(<InstallFrom>)/\1<\!--\r\n\1\2/" $win10any
 
-# ƒRƒƒ“ƒgƒAƒEƒgI—¹
+# ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆçµ‚äº†
 sed -i -r "s/( *)(<\/InstallFrom>)/\1\2\r\n\1-->/" $win10any
 
 
-# win11 pro‚Ìƒtƒ@ƒCƒ‹‚ğƒRƒs[‚µ‚Äwin11 anyì¬
+# win11 proã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦win11 anyä½œæˆ
 cp $win11pro $win11any
 
-# ƒRƒƒ“ƒgƒAƒEƒgŠJn
+# ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆé–‹å§‹
 sed -i -r "s/( *)(<InstallFrom>)/\1<\!--\r\n\1\2/" $win11any
 
-# ƒRƒƒ“ƒgƒAƒEƒgI—¹
+# ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆçµ‚äº†
 sed -i -r "s/( *)(<\/InstallFrom>)/\1\2\r\n\1-->/" $win11any
 
 
