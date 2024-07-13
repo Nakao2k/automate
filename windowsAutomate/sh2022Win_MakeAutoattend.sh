@@ -1,25 +1,49 @@
 #/bin/bash
 
 # 入力/出力ファイルを定義
-win2022std=autounattend_win2022std_jp.xml
-win2022dc=autounattend_win2022dc_jp.xml
-win2022any=autounattend_win2022any_jp.xml
+win2022std_rw=autounattend_win2022std_jp_RdpWinrm.xml
+win2022dc_rw=autounattend_win2022dc_jp_RdpWinrm.xml
+win2022_rw=autounattend_win2022_jp_RdpWinrm.xml
+
+win2022std_rdp=autounattend_win2022std_jp_Rdp.xml
+win2022dc_rdp=autounattend_win2022dc_jp_Rdp.xml
+win2022_rdp=autounattend_win2022_jp_Rdp.xml
+
+# win2022 stdの最終行の<cpi:offlineImage>タグを削除
+sed -i -r "s/( *)<cpi:offlineImage(.*)//" $win2022std_rw
+sed -i -z 's/\r\n\n/\r\n/g' $win2022std_rw
 
 
 # win2022 stdのファイルをコピーしてwin2022 dc作成
-cp $win2022std $win2022dc
+cp $win2022std_rw $win2022dc_rw
 
-# Windows Server 2022 SERVERSTANDARDをWindows 11 proに変更
-sed -i -r "s/(<Value>)Windows Server 2022 SERVERSTANDARD(<\/Value>)/\1Windows Server 2022 SERVERDATACENTER\2/" $win2022dc
+# Windows Server 2022 Server StandardをWindows Server 2022 Server Datacenterに変更
+sed -i -r "s/(<Value>)Windows Server 2022 SERVERSTANDARD(<\/Value>)/\1Windows Server 2022 SERVERDATACENTER\2/" $win2022dc_rw
 
+# win2022 stdのファイルをコピーしてwin2022 作成
+cp $win2022std_rw $win2022_rw
 
-# win2022 proのファイルをコピーしてwin2022 any作成
-cp $win2022std $win2022any
+# <InstallFrom>タグを削除
+sed -i -r "/( *)(<InstallFrom>)/,/( *)(<\/InstallFrom>)/d" $win2022_rw
 
-# コメントアウト開始
-sed -i -r "s/( *)(<InstallFrom>)/\1<\!--\r\n\1\2/" $win2022any
+# win2022 std RdpWinrmのファイルをコピーしてwin2022 std Rdp作成
+cp $win2022std_rw $win2022std_rdp
 
-# コメントアウト終了
-sed -i -r "s/( *)(<\/InstallFrom>)/\1\2\r\n\1-->/" $win2022any
+# winrmのコマンドスクリプトを削除
+sed -i '161,201d' $win2022std_rdp
 
+# win2022 dc RdpWinrmのファイルをコピーしてwin2022 dc Rdp作成
+cp $win2022dc_rw $win2022dc_rdp
+
+# winrmのコマンドスクリプトを削除
+sed -i '161,201d' $win2022dc_rdp
+
+# win2022 std RdpWinrmのファイルをコピーしてwin2022 Rdp作成
+cp $win2022std_rw $win2022_rdp
+
+# winrmのコマンドスクリプトを削除
+sed -i '161,201d' $win2022_rdp
+
+# <InstallFrom>タグを削除
+sed -i -r "/( *)(<InstallFrom>)/,/( *)(<\/InstallFrom>)/d" $win2022_rdp
 

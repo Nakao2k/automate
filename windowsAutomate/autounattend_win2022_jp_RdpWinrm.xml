@@ -83,14 +83,6 @@
                 <OSImage>
                     <!-- https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-setup-imageinstall-dataimage-installfrom-metadata-key -->
                     <!-- Get-WindowsImage -ImagePath D:\sources\install.wim -->
-                    <!--
-                    <InstallFrom>
-                        <MetaData wcm:action="add">
-                            <Key>/IMAGE/NAME</Key>
-                            <Value>Windows Server 2022 SERVERSTANDARD</Value>
-                        </MetaData>
-                    </InstallFrom>
-                    -->
                     <InstallTo>
                         <DiskID>0</DiskID>
                         <PartitionID>4</PartitionID>
@@ -241,5 +233,4 @@
             <DoNotCleanUpNonPresentDevices>false</DoNotCleanUpNonPresentDevices>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:c:/custom_iso/image_win2022/install.wim#Windows Server 2022 SERVERSTANDARD" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
