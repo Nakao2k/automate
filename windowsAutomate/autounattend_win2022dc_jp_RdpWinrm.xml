@@ -156,7 +156,13 @@
                     <Order>1</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                     <CommandLine>%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -Command &quot;Get-NetFirewallRule | Where-Object { $_.Name -like &apos;RemoteDesktop*&apos; -and $_.Name -notlike &apos;*ws*&apos; } | Set-NetFirewallRule -Enabled true&quot;</CommandLine>
-                    <Description>Firewall enables RDP (Remote Desktop) from clients</Description>
+                    <Description>Firewall rule enables RDP (Remote Desktop) from clients</Description>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Order>2</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                    <CommandLine>%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -Command &quot;Get-NetFirewallRule | Where-Object { $_.Name -like &apos;FPS-ICMP*&apos; -and $_.Name -notlike &apos;*ws*&apos; } | Set-NetFirewallRule -Enabled true&quot;</CommandLine>
+                    <Description>Firewall rule enables Ping IPv4/v6 from clients</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -Command New-SelfSignedCertificate -CertstoreLocation Cert:\LocalMachine\My -DnsName "WinRMCertificate"</CommandLine>

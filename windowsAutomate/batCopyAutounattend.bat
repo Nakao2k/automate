@@ -6,7 +6,7 @@ set dir_win2022=C:\custom_iso\OS_WindowsServer_2022_trial
 copy autounattend_win10pro_jp.xml %dir_win10%\autounattend.xml
 copy autounattend_win11pro_jp.xml %dir_win11%\autounattend.xml
 
-copy autounattend_win2022std_jp.xml %dir_win2022%\autounattend.xml
+copy autounattend_win2022std_jp_RdpWinrm.xml %dir_win2022%\autounattend.xml
 
 pause
 
