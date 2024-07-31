@@ -1,0 +1,112 @@
+#cloud-config
+# Rename filename from user-data-typeA-BIOS.txt to user-data
+# See the autoinstall documentation at:
+# https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
+autoinstall:
+  apt:
+    preserve_sources_list: false
+    mirror-selection:
+      primary:
+        - country-mirror
+        - arches: [i386, amd64]
+          uri: "http://archive.ubuntu.com/ubuntu"
+        - arches: [s390x, arm64, armhf, powerpc, ppc64el, riscv64]
+          uri: "http://ports.ubuntu.com/ubuntu-ports"
+    fallback: abort
+    geoip: true
+  identity:
+    hostname: ubuntu-server
+    # password: "Password#99" ($ openssl passwd -6 -salt $(openssl rand -hex 8) "Password#99")
+    password: "$6$9dcb121c7c496f83$IoAOKKUrk6d7C5lDsdlBHrrUFld7hpnytMnWAlu1B2Ikj9XgxukcuAn7JfRHZFkLwZUZuSyRHQ.zflneDaUYN/"
+    realname: "Your RealName"
+    username: ubuntu
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: jp
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  source:
+    # id: ubuntu-server-minimal
+    id: ubuntu-server
+    search_drivers: false
+  ssh:
+    allow-pw: true
+    authorized-keys:
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUsTueFuve98oB1DB6eNPdi6kwylPQaRxqJKlv7OZiI
+      nakao2k@github/95845891 # ssh-import-id gh:nakao2k'
+    install-server: true
+  storage:
+    config:
+    - ptable: gpt
+      path: /dev/sda
+      wipe: superblock-recursive
+      preserve: false
+      name: ''
+      grub_device: true
+      id: disk-sda
+      type: disk
+    - device: disk-sda
+      size: 1M
+      flag: bios_grub
+      number: 1
+      preserve: false
+      grub_device: false
+      path: /dev/sda1
+      id: partition-0
+      type: partition
+    - device: disk-sda
+      size: 2G
+      wipe: superblock
+      number: 2
+      preserve: false
+      grub_device: false
+      path: /dev/sda2
+      id: partition-1
+      type: partition
+    - fstype: ext4
+      volume: partition-1
+      preserve: false
+      id: format-0
+      type: format
+    - device: disk-sda
+      size: -1
+      wipe: superblock
+      number: 3
+      preserve: false
+      grub_device: false
+      path: /dev/sda3
+      id: partition-2
+      type: partition
+    - name: ubuntu-vg
+      devices:
+      - partition-2
+      preserve: false
+      id: lvm_volgroup-0
+      type: lvm_volgroup
+    - name: ubuntu-lv
+      volgroup: lvm_volgroup-0
+      size: -1
+      wipe: superblock
+      preserve: false
+      path: /dev/ubuntu-vg/ubuntu-lv
+      id: lvm_partition-0
+      type: lvm_partition
+    - fstype: ext4
+      volume: lvm_partition-0
+      preserve: false
+      id: format-1
+      type: format
+    - path: /
+      device: format-1
+      id: mount-1
+      type: mount
+    - path: /boot
+      device: format-0
+      id: mount-0
+      type: mount
+  updates: security
+  user-data:
+    timezone: Asia/Tokyo
+  version: 1
