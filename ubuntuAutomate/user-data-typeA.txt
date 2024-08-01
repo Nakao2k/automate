@@ -33,9 +33,9 @@ autoinstall:
     search_drivers: false
   ssh:
     allow-pw: true
-    authorized-keys:
-    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUsTueFuve98oB1DB6eNPdi6kwylPQaRxqJKlv7OZiI
-      nakao2k@github/95845891 # ssh-import-id gh:nakao2k'
+    # authorized-keys:
+    # - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUsTueFuve98oB1DB6eNPdi6kwylPQaRxqJKlv7OZiI
+    #   nakao2k@github/95845891 # ssh-import-id gh:nakao2k'
     install-server: true
   interactive-sections:  # Install groups listed here will wait for user input
    - storage
