@@ -1,5 +1,5 @@
 #cloud-config
-# Rename filename from user-data-typeB.txt to user-data
+# Rename filename to "user-data"
 # See the autoinstall documentation at:
 # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
 autoinstall:
