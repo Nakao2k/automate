@@ -1,5 +1,5 @@
 #cloud-config
-# Rename filename to "user-data"
+# Rename filename from user-data-typeA-BIOS.txt to user-data
 # See the autoinstall documentation at:
 # https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
 autoinstall:
@@ -33,9 +33,9 @@ autoinstall:
     search_drivers: false
   ssh:
     allow-pw: true
-    # authorized-keys:
-    # - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUsTueFuve98oB1DB6eNPdi6kwylPQaRxqJKlv7OZiI
-    #   nakao2k@github/95845891 # ssh-import-id gh:nakao2k'
+    authorized-keys:
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUsTueFuve98oB1DB6eNPdi6kwylPQaRxqJKlv7OZiI
+      nakao2k@github/95845891 # ssh-import-id gh:nakao2k'
     install-server: true
   storage:
     config:
