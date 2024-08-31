@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # isoファイルを解凍するディレクトリ
 isofile=`ls -1 ubuntu*.iso | sed -e 's/\.iso$//'`
