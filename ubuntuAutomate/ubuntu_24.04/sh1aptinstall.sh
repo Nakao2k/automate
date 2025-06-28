@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # パッケージリストを更新
-sudo apt update
+sudo apt -y update
 
 # 7-Zip 圧縮ツールをインストール
-sudo apt install p7zip-full
+sudo apt -y install p7zip-full
 
 # ファイルをダウンロードするためのツール wget をインストール
-sudo apt install wget
+sudo apt -y install wget
 
 # ISO イメージを操作するためのツール xorriso をインストール
-sudo apt install xorriso
+sudo apt -y install xorriso
